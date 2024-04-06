@@ -1,8 +1,8 @@
 {
   "name": "namemaster",
-  "displayName": "Name Master",
+  "displayName": "Name Master | 命名大师",
   "description": "用GPT给程序命名",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.88.0"
   },
