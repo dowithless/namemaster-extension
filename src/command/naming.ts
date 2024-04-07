@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { NamingSuggestionsProvider } from "../provider/NamingSuggestionsProvider";
+import { NamingSuggestionsProvider } from "../completion-item-provider";
 
 export function registerNaming(context: vscode.ExtensionContext) {
   const namingSuggestionsProvider = new NamingSuggestionsProvider(context);
