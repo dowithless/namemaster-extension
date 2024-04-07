@@ -4,8 +4,9 @@ import axios from "axios";
 const API_URL = process.env.API_URL || "https://www.namemaster.org";
 
 async function fetchNamingSuggestions(
-  userKey: string,
-  text: string
+  key: string,
+  text: string,
+  language: string
 ): Promise<{
   error?: string;
   match: string;
@@ -13,11 +14,7 @@ async function fetchNamingSuggestions(
   results: { name: string; desc: string }[];
 }> {
   const { data } = await axios.get(`${API_URL}/api/naming`, {
-    params: {
-      key: userKey,
-      language: "js",
-      text,
-    },
+    params: { key, language, text },
   });
 
   console.log("api res", data);
@@ -46,13 +43,24 @@ export class NamingSuggestionsProvider
       return undefined;
     }
 
+    // 获取当前活动的编辑器
+    const activeEditor = vscode.window.activeTextEditor;
+    if (!activeEditor) {
+      vscode.window.showInformationMessage("No active editor");
+      return;
+    }
+
+    // 获取文件的语言标识符
+    const languageId = activeEditor.document.languageId;
+    console.log(`Current file type is: ${languageId}`);
+
     const linePrefix = document
       .lineAt(position)
       .text.substring(0, position.character);
 
     const userKey = this.extensionContext.globalState.get("key") as string;
 
-    return fetchNamingSuggestions(userKey, linePrefix)
+    return fetchNamingSuggestions(userKey, linePrefix, languageId)
       .then((data) => {
         const { match, kind, results, error } = data;
         if (error) {
@@ -86,8 +94,8 @@ export class NamingSuggestionsProvider
         return completionItems;
       })
       .catch((error: any) => {
-        return [];
         vscode.window.showErrorMessage(error.message);
+        return [];
       })
       .finally(() => {
         this.enabled = false;
