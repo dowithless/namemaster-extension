@@ -21,7 +21,7 @@ export async function generateNamingSuggestions(
 ): Promise<GenerateNamingSuggestionsReturns> {
   const { key, text, language } = params;
 
-  const { data } = await axios.get("/api/naming", {
+  const { data } = await axios.get("/api/admin/subscribe", {
     params: { key, language, text },
   });
 

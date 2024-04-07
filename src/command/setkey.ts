@@ -12,7 +12,7 @@ export function registerSetkey(context: vscode.ExtensionContext) {
       if (key !== undefined && key !== "") {
         // 将用户输入的key保存起来，这里使用GlobalState作为示例
         context.globalState.update("key", key);
-        vscode.window.showInformationMessage(`Key "${key}" 已保存!`);
+        vscode.window.showInformationMessage(`设置完成 🎉!`);
       } else {
         vscode.window.showErrorMessage("未输入有效的key！");
       }
