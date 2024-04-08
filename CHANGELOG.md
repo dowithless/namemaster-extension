@@ -1,8 +1,15 @@
 # Change Log
 
-All notable changes to the "namemaster" extension will be documented in this file.
+## [0.0.10]
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- 更新了 api 路径
+- 更新了 prompt
+- 更新了 set key 提示
+- 移除了订阅时间检查(不再设置订阅有效期, 只要有 token 余额就可以使用)
+
+## [0.0.9]
+
+- 更新了 生成用户 key 的算法
 
 ## [0.0.8]
 

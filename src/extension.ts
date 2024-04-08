@@ -3,7 +3,7 @@ import { registerSetkey } from "./command/setkey";
 import { registerNaming } from "./command/naming";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Your extension "namemaster" is now active! 1');
+  console.log('Your extension "namemaster" is now active!');
 
   registerNaming(context);
   registerSetkey(context);

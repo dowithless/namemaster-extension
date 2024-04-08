@@ -14,8 +14,8 @@
       "preLaunchTask": "${defaultBuildTask}",
       "env": {
         // "API_URL": "https://namemaster-next.vercel.app"
-        "API_URL": "https://www.namemaster.org"
-        // "API_URL": "http://localhost:3000"
+        // "API_URL": "https://www.namemaster.org"
+        "API_URL": "http://localhost:3000"
       }
     }
   ]
